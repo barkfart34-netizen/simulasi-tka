@@ -392,7 +392,7 @@ const BASE_QUESTION_BANK: Question[] = [
     options: [
       {
         id: "A",
-        text: "Cadangan karbon per hektare hutan mangrove lebih dari tiga kali lipat hutan hujan tropis daratan.",
+        text: "Hutan mangrove memiliki cadangan karbon per hektare sekaligus laju serapan tahunan tertinggi dibanding ketiga ekosistem lain pada tabel.",
       },
       {
         id: "B",
@@ -409,7 +409,7 @@ const BASE_QUESTION_BANK: Question[] = [
     ],
     correctAnswer: ["A", "B", "D"],
     explanation:
-      "A benar (950 > 3 × 280 = 840). B benar (padang lamun 88% di sedimen, tertinggi, tetapi total cadangan 165 ton C/ha, terendah). C salah (gambut 15,0 < mangrove 24,5). D benar sesuai kalimat terakhir paragraf kedua.",
+      "A benar sesuai tabel (mangrove tertinggi pada cadangan karbon maupun laju serapan tahunan). B benar (padang lamun tertinggi pada proporsi sedimen namun terendah pada total cadangan). C salah (gambut lebih rendah dari mangrove). D benar sesuai kalimat terakhir paragraf kedua.",
   },
   {
     id: "LIT-03",
@@ -535,13 +535,12 @@ const BASE_QUESTION_BANK: Question[] = [
     stimulusTitle: "Pola Verifikasi Informasi Digital 2026",
     stimulusHtml: STIMULUS_LIT_3,
     promptHtml:
-      "<p>Berdasarkan hasil survei dalam teks, berapa persen <strong>selisih</strong> akurasi deteksi hoaks antara pelajar yang mengikuti pelatihan <em>Lateral Reading</em> dibandingkan kelompok tanpa pelatihan? <em>(Tulis angkanya saja, tanpa tanda %)</em></p>",
-    correctAnswer: "37",
-    acceptedNumeric: { value: 37, tolerance: 0, unit: "%" },
-    isianPlaceholder: "Contoh: 25",
-    isianUnit: "%",
+      "<p>Berdasarkan bacaan di atas, apa nama teknik membaca kritis dengan cara membuka tab baru untuk memeriksa kredibilitas penerbit dan bukti pendukung berita? <em>(Tulis 2 kata sesuai istilah dalam teks)</em></p>",
+    correctAnswer: "Lateral Reading",
+    isianPlaceholder: "Contoh: Critical Thinking",
+    isianUnit: "",
     explanation:
-      "Akurasi kelompok dengan pelatihan Lateral Reading = 84%, sedangkan tanpa pelatihan = 47%. Selisihnya adalah 84% - 47% = 37%.",
+      "Pada butir ketiga temuan survei dan paragraf penutup disebutkan secara eksplisit istilah 'Lateral Reading', yaitu kebiasaan membuka tab baru untuk mengecek kredibilitas penerbit dan bukti pendukung.",
   },
   {
     id: "LIT-08",
@@ -673,13 +672,13 @@ const BASE_QUESTION_BANK: Question[] = [
       },
       {
         id: "S3",
-        text: "Integrasi antarmoda berpotensi memangkas hampir sepertiga waktu tempuh rata-rata warga dalam tiga tahun.",
+        text: "Penulis menyarankan pendekatan terpadu yang menggabungkan peningkatan mutu transportasi publik dengan pengendalian parkir kendaraan pribadi.",
         answer: "B",
       },
     ],
     correctAnswer: { S1: "B", S2: "S", S3: "B" },
     explanation:
-      "S1 Benar (data kuantitatif memperkuat klaim ketimpangan). S2 Salah (teks menyebut perlunya disinsentif parkir). S3 Benar (penurunan 31% mendekati sepertiga / 33,3%).",
+      "S1 Benar (data ketimpangan memperkuat argumen penulis). S2 Salah (teks menyebut perlunya disinsentif parkir). S3 Benar karena paragraf kedua menekankan kombinasi kualitas layanan publik sekaligus disinsentif parkir di pusat bisnis.",
   },
   {
     id: "LIT-13",
@@ -692,16 +691,19 @@ const BASE_QUESTION_BANK: Question[] = [
     stimulusTitle: "Gula Tersembunyi dalam Minuman Kemasan",
     stimulusHtml: STIMULUS_LIT_5,
     promptHtml:
-      "<p>Jika seorang pelajar dalam sehari mengonsumsi <strong>1 botol Teh Manis Kemasan</strong> dan <strong>1 botol Kopi Susu Gula Aren</strong>, bagaimana status asupan gula tambahannya dibandingkan anjuran Kemenkes/WHO?</p>",
+      "<p>Berdasarkan bacaan di atas, mengapa konsumsi minuman manis kemasan sering kali tidak disadari dapat memicu kelebihan asupan gula harian?</p>",
     options: [
-      { id: "A", text: "Masih berada di bawah batas ideal harian 25 gram." },
-      { id: "B", text: "Berada tepat pada batas ideal harian sebesar 25 gram." },
-      { id: "C", text: "Sudah melampaui batas maksimal harian 50 gram (total 52 gram)." },
-      { id: "D", text: "Masih aman karena total gula tambahannya baru mencapai 42 gram." },
+      { id: "A", text: "Karena seluruh produk minuman kemasan dilarang mencantumkan tabel informasi nilai gizi." },
+      {
+        id: "B",
+        text: "Karena kandungan gula tambahan dalam satu hingga dua botol minuman kemasan saja sudah dapat melampaui ambang batas anjuran harian.",
+      },
+      { id: "C", text: "Karena anjuran batas gula Kemenkes dan WHO hanya berlaku untuk makanan pokok, bukan minuman." },
+      { id: "D", text: "Karena rasa manis pada seluruh minuman kemasan selalu berasal dari laktosa alami susu." },
     ],
-    correctAnswer: "C",
+    correctAnswer: "B",
     explanation:
-      "Teh Manis Kemasan (28 g) + Kopi Susu Gula Aren (24 g) = 52 gram gula tambahan, sehingga sudah melampaui batas maksimal harian 50 gram.",
+      "Kalimat terakhir paragraf pertama menyatakan secara tersurat bahwa tanpa disadari, satu hingga dua botol minuman manis kemasan sudah dapat melampaui ambang batas harian.",
   },
   {
     id: "LIT-14",
@@ -714,16 +716,16 @@ const BASE_QUESTION_BANK: Question[] = [
     stimulusTitle: "Gula Tersembunyi dalam Minuman Kemasan",
     stimulusHtml: STIMULUS_LIT_5,
     promptHtml:
-      "<p>Pilihlah <strong>semua pernyataan yang TEPAT</strong> berdasarkan tabel kandungan gula kemasan di atas! <em>(Jawaban benar lebih dari satu)</em></p>",
+      "<p>Pilihlah <strong>semua pernyataan yang TEPAT</strong> berdasarkan isi teks dan tabel label gizi di atas! <em>(Jawaban benar lebih dari satu)</em></p>",
     options: [
-      { id: "A", text: "Mengonsumsi 1 botol Minuman Isotonik (30 g) saja sudah melebihi batas ideal gula tambahan harian (25 g)." },
+      { id: "A", text: "Mengonsumsi satu botol Minuman Isotonik saja sudah melampaui batas ideal gula tambahan harian." },
       { id: "B", text: "Susu UHT Plain tidak mengandung gula tambahan sama sekali, melainkan hanya laktosa alami." },
-      { id: "C", text: "Jus Buah Kemasan 250 mL memiliki gula tambahan lebih tinggi daripada Teh Manis Kemasan 350 mL." },
-      { id: "D", text: "Dua kotak Jus Buah Kemasan menyumbang 44 gram gula tambahan, hampir mencapai batas maksimal 50 gram." },
+      { id: "C", text: "Jus Buah Kemasan tercatat memiliki gula tambahan paling tinggi dibandingkan minuman lainnya." },
+      { id: "D", text: "Selain mengandung gula tambahan tertinggi pada tabel, Minuman Isotonik juga dicatat memiliki kandungan natrium yang tinggi." },
     ],
     correctAnswer: ["A", "B", "D"],
     explanation:
-      "A benar (30 g > 25 g). B benar (0 g gula tambahan, hanya 11 g laktosa alami). C salah (22 g < 28 g). D benar (2 × 22 g = 44 g, mendekati 50 g).",
+      "A benar (isotonik mengandung 30 g gula tambahan, melebihi batas ideal 25 g). B benar sesuai baris terakhir tabel. C salah (tertinggi adalah Minuman Isotonik, bukan Jus Buah). D benar sesuai kolom Catatan Label Gizi.",
   },
   {
     id: "LIT-15",
@@ -750,13 +752,13 @@ const BASE_QUESTION_BANK: Question[] = [
       },
       {
         id: "S3",
-        text: "Mengonsumsi 2 botol Kopi Susu Gula Aren (48 g) memang di bawah batas maksimal 50 g, tetapi sudah hampir dua kali lipat batas ideal 25 g.",
+        text: "Anjuran membatasi gula tambahan hingga batas ideal bertujuan menurunkan risiko penyakit metabolik seperti diabetes melitus tipe-2 dan obesitas.",
         answer: "B",
       },
     ],
     correctAnswer: { S1: "S", S2: "B", S3: "B" },
     explanation:
-      "S1 Salah karena jus buah kemasan pada tabel masih mengandung 22 g gula tambahan. S2 Benar sesuai tujuan panduan label gizi. S3 Benar (48 g < 50 g namun mendekati 2 × 25 g = 50 g).",
+      "S1 Salah karena jus buah kemasan pada tabel tetap menggunakan konsentrat buah plus gula tambahan. S2 Benar sesuai tujuan panduan label gizi. S3 Benar sesuai paragraf pertama.",
   },
   {
     id: "LIT-16",

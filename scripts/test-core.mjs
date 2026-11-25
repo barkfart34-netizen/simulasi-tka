@@ -38,13 +38,15 @@ const partialAnswers = {
   "LIT-01": "B", // correct (10)
   "LIT-02": ["A", "B"], // 2 of 3 right, 0 wrong -> partial
   "LIT-03": { S1: "B", S2: "B", S3: "S" }, // 2 of 3 -> partial
-  "LIT-07": " 37% ", // normalized -> correct
-  "NUM-02": "Rp 12.000", // normalized -> correct
+  "LIT-07": " lateral reading ", // normalized text -> correct
+  "LIT-32": " INVERTER ", // normalized text -> correct
+  "NUM-02": "Rp 12.000", // normalized numeric -> correct
 };
-const partial = evaluateSession(["LIT-01", "LIT-02", "LIT-03", "LIT-07", "NUM-02"], partialAnswers);
+const partial = evaluateSession(["LIT-01", "LIT-02", "LIT-03", "LIT-07", "LIT-32", "NUM-02"], partialAnswers);
 assert.equal(partial.items.find((i) => i.questionId === "LIT-02").status, "partial");
 assert.equal(partial.items.find((i) => i.questionId === "LIT-03").status, "partial");
 assert.equal(partial.items.find((i) => i.questionId === "LIT-07").status, "correct");
+assert.equal(partial.items.find((i) => i.questionId === "LIT-32").status, "correct");
 assert.equal(partial.items.find((i) => i.questionId === "NUM-02").status, "correct");
 assert.ok(partial.recommendations.length > 0);
 
