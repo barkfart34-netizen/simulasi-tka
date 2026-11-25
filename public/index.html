@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMULASI TKA — Pusmendik CBT (Literasi &amp; Numerasi)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/tka.css" />
+</head>
+<body>
+  <!-- =================================================================== -->
+  <!-- VIEW 1: LOGIN PESERTA (AUTHENTIC PUSMENDIK CBT STYLE)               -->
+  <!-- =================================================================== -->
+  <section id="view-login" class="view active">
+    <div class="login-hero">
+      <div class="login-hero-inner">
+        <div class="brand-lockup">
+          <div class="brand-emblem" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="44" height="44">
+              <rect width="48" height="48" rx="10" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+              <path d="M24 9 L37 16 V28 C37 34.5 31.2 38.8 24 41 C16.8 38.8 11 34.5 11 28 V16 Z" fill="none" stroke="#ffffff" stroke-width="2.4"/>
+              <path d="M18 24.5 L22.2 28.7 L31 19.5" fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-kicker">PUSAT ASESMEN PENDIDIKAN • CBT SIMULASI</div>
+            <h1 id="login-exam-title" class="brand-title">SIMULASI TKA NASIONAL 2026</h1>
+          </div>
+        </div>
+        <button id="btn-open-proctor" class="btn btn-outline-light btn-sm" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Dasbor Proktor / Admin
+        </button>
+      </div>
+    </div>
+
+    <main class="login-container">
+      <div class="login-grid">
+        <div class="card login-card">
+          <div class="card-header-strip">
+            <h2>Login Peserta Ujian</h2>
+            <p>Masukkan identitas peserta serta Token Ujian aktif dari Proktor untuk memulai simulasi.</p>
+          </div>
+          <form id="form-student-login" class="card-body" autocomplete="off">
+            <div id="login-alert" class="alert alert-danger hidden"></div>
+            <div id="login-locked-banner" class="alert alert-warning hidden">
+              Akses ujian sedang dikunci sementara oleh Proktor. Silakan tunggu hingga dibuka.
+            </div>
+
+            <div class="form-group">
+              <label for="input-nisn">NISN / Nomor Peserta <span class="req">*</span></label>
+              <input id="input-nisn" type="text" required minlength="4" maxlength="24" placeholder="Contoh: 0084521901 atau TKA-001" />
+            </div>
+
+            <div class="form-group">
+              <label for="input-name">Nama Lengkap Peserta <span class="req">*</span></label>
+              <input id="input-name" type="text" required minlength="2" maxlength="80" placeholder="Nama lengkap sesuai kartu peserta" />
+            </div>
+
+            <div class="form-group">
+              <label for="input-school">Kelas / Asal Sekolah <span class="req">*</span></label>
+              <input id="input-school" type="text" required minlength="2" maxlength="80" placeholder="Contoh: XII IPA 1 - SMAN 1 Nusantara" />
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="input-package">Paket Subtes TKA <span class="req">*</span></label>
+                <select id="input-package">
+                  <option value="lengkap">Paket Lengkap — Literasi &amp; Numerasi (24 Soal • 60 Menit)</option>
+                  <option value="literasi">Subtes Literasi Membaca (12 Soal • 30 Menit)</option>
+                  <option value="numerasi">Subtes Numerasi (12 Soal • 35 Menit)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="input-token">Token Ujian <span class="req">*</span></label>
+                <input id="input-token" class="mono-input" type="text" required minlength="4" maxlength="12" placeholder="CONTOH: TKA26A" />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button id="btn-to-confirm" type="submit" class="btn btn-primary btn-block btn-lg">
+                Lanjutkan ke Konfirmasi Data ►
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="login-side">
+          <div class="card info-card">
+            <div class="info-card-title">
+              <span class="shield-badge">🛡️</span>
+              <h3>Lapisan Keamanan Safe Exam Shield</h3>
+            </div>
+            <ul class="security-checklist">
+              <li><strong>Mode Layar Penuh Wajib:</strong> Keluar dari layar penuh langsung tercatat sebagai pelanggaran.</li>
+              <li><strong>Deteksi Pindah Tab &amp; Aplikasi:</strong> Pindah tab, Alt+Tab, atau membuka jendela lain dipantau real-time oleh Proktor.</li>
+              <li><strong>Proteksi Konten &amp; DevTools:</strong> Salin-tempel, klik kanan, inspect element, dan multi-tab diblokir otomatis.</li>
+              <li><strong>Kunci Jawaban &amp; Timer Server:</strong> Waktu ujian dan penilaian dikendalikan 100% oleh server Cloudflare.</li>
+              <li><strong>Auto-Submit Pelanggaran:</strong> Melebihi batas <span id="info-max-viol">3</span>× pelanggaran akan mengunci &amp; mengumpulkan ujian otomatis.</li>
+            </ul>
+          </div>
+
+          <div class="card info-card">
+            <div class="info-card-title">
+              <span class="shield-badge">📘</span>
+              <h3>Struktur Soal Standar TKA / AKM</h3>
+            </div>
+            <div class="format-tags">
+              <span class="tag">Pilihan Ganda (PG)</span>
+              <span class="tag">Pilihan Ganda Kompleks</span>
+              <span class="tag">Benar / Salah (Matriks)</span>
+              <span class="tag">Isian Singkat</span>
+            </div>
+            <p class="muted-note">Setiap peserta menerima urutan stimulus &amp; opsi yang diacak unik per sesi, diikuti laporan <strong>Auto-Evaluasi Kompetensi</strong> lengkap setelah selesai.</p>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- VIEW 2: KONFIRMASI DATA PESERTA (PRE-EXAM PUSMENDIK SCREEN)         -->
+  <!-- =================================================================== -->
+  <section id="view-confirm" class="view">
+    <header class="cbt-topbar">
+      <div class="cbt-brand">
+        <span class="cbt-logo-dot">TKA</span>
+        <div>
+          <div class="cbt-brand-title">KONFIRMASI DATA PESERTA</div>
+          <div class="cbt-brand-sub">PUSMENDIK CBT • SAFE EXAM BROWSER MODE</div>
+        </div>
+      </div>
+      <button id="btn-back-login" class="btn btn-outline-light btn-sm" type="button">◄ Kembali</button>
+    </header>
+
+    <main class="confirm-container">
+      <div class="confirm-grid">
+        <div class="card">
+          <div class="card-header-strip">
+            <h2>Konfirmasi Tes</h2>
+            <p>Periksa kembali data peserta dan mata uji sebelum menekan tombol MULAI.</p>
+          </div>
+          <div class="card-body">
+            <dl class="confirm-dl">
+              <div><dt>Kode / NISN</dt><dd id="conf-nisn">-</dd></div>
+              <div><dt>Nama Peserta</dt><dd id="conf-name">-</dd></div>
+              <div><dt>Kelas / Sekolah</dt><dd id="conf-school">-</dd></div>
+              <div><dt>Mata Uji</dt><dd id="conf-package">-</dd></div>
+              <div><dt>Jumlah Butir Soal</dt><dd id="conf-count">-</dd></div>
+              <div><dt>Alokasi Waktu</dt><dd id="conf-duration">-</dd></div>
+              <div><dt>Token Ujian</dt><dd><span id="conf-token" class="code-pill">-</span></dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header-strip">
+            <h2>Pakta Integritas &amp; Kesiapan Sistem</h2>
+            <p>Sistem akan mengaktifkan mode layar penuh &amp; pengawasan otomatis begitu tes dimulai.</p>
+          </div>
+          <div class="card-body">
+            <div class="integrity-box">
+              <label class="checkbox-agree">
+                <input id="chk-integrity" type="checkbox" />
+                <span>Saya menyatakan mengerjakan Simulasi TKA ini secara jujur, mandiri, dan bersedia dipantau oleh sistem anti-kecurangan (Layar Penuh, Deteksi Tab, Watermark Identitas).</span>
+              </label>
+            </div>
+            <div id="confirm-alert" class="alert alert-danger hidden"></div>
+            <button id="btn-start-exam" class="btn btn-primary btn-block btn-lg" type="button" disabled>
+              MULAI UJIAN (AKTIFKAN LAYAR PENUH)
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- VIEW 3: ANTARMUKA UJIAN CBT (PUSMENDIK TKA SIGNATURE LAYOUT)        -->
+  <!-- =================================================================== -->
+  <section id="view-exam" class="view exam-mode">
+    <!-- Dynamic Anti-Screenshot Watermark -->
+    <div id="exam-watermark" class="exam-watermark" aria-hidden="true"></div>
+
+    <!-- Top Pusmendik Blue Header -->
+    <header class="cbt-topbar">
+      <div class="cbt-brand">
+        <span class="cbt-logo-dot">TKA</span>
+        <div>
+          <div class="cbt-brand-title" id="exam-header-title">SIMULASI TKA — PUSMENDIK CBT</div>
+          <div class="cbt-brand-sub" id="exam-header-subtes">SUBTES: LITERASI MEMBACA</div>
+        </div>
+      </div>
+      <div class="cbt-header-right">
+        <div id="security-pill" class="security-pill ok" title="Status Integritas Keamanan">
+          🛡️ Aman • <span id="exam-viol-text">0/3</span>
+        </div>
+        <div class="student-pill">
+          <span id="exam-student-name">Peserta</span>
+          <small id="exam-student-nisn">000000</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-bar: Soal No, Font Size, Timer, Daftar Soal -->
+    <div class="cbt-subbar">
+      <div class="cbt-subbar-left">
+        <div class="soal-no-group">
+          <span class="soal-no-label">SOAL NO.</span>
+          <span id="q-number-badge" class="soal-no-badge">1</span>
+        </div>
+        <div class="soal-meta-pills">
+          <span id="q-subject-pill" class="meta-pill subject">Literasi</span>
+          <span id="q-domain-pill" class="meta-pill domain">Teks Informasi</span>
+          <span id="q-level-pill" class="meta-pill level">L1</span>
+          <span id="q-type-pill" class="meta-pill qtype">Pilihan Ganda</span>
+        </div>
+      </div>
+
+      <div class="cbt-subbar-right">
+        <div class="font-control" role="group" aria-label="Ukuran font soal">
+          <span class="font-control-label">Ukuran font:</span>
+          <button id="btn-font-dec" type="button" class="font-btn" title="Perkecil huruf">A-</button>
+          <button id="btn-font-reset" type="button" class="font-btn active" title="Ukuran normal">A</button>
+          <button id="btn-font-inc" type="button" class="font-btn" title="Perbesar huruf">A+</button>
+        </div>
+
+        <div id="timer-box" class="timer-pill" title="Sisa Waktu (Sinkron Server)">
+          <span class="timer-label">Sisa Waktu</span>
+          <span id="exam-timer" class="timer-value">60:00</span>
+        </div>
+
+        <button id="btn-open-daftar" class="btn btn-daftar" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"/></svg>
+          Daftar Soal
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Split-Pane Exam Canvas -->
+    <main id="exam-canvas" class="exam-canvas font-md">
+      <div class="exam-split">
+        <!-- Left Pane: Stimulus / Wacana / Tabel / Diagram -->
+        <article class="pane-stimulus">
+          <div class="pane-label">STIMULUS / WACANA SOAL</div>
+          <div id="q-stimulus-content" class="stimulus-body"></div>
+        </article>
+
+        <!-- Right Pane: Pertanyaan & Pilihan Jawaban -->
+        <article class="pane-question">
+          <div class="pane-label-row">
+            <span class="pane-label">PERTANYAAN &amp; JAWABAN</span>
+            <span id="save-indicator" class="save-indicator">Tersimpan</span>
+          </div>
+          <div id="q-prompt-content" class="question-prompt"></div>
+          <div id="q-answer-area" class="answer-area"></div>
+        </article>
+      </div>
+    </main>
+
+    <!-- Bottom Fixed Pusmendik Action Bar -->
+    <footer class="cbt-footer">
+      <button id="btn-prev-q" class="btn btn-prev" type="button">◄ Soal sebelumnya</button>
+
+      <label id="ragu-toggle-wrap" class="btn btn-ragu">
+        <input id="chk-ragu" type="checkbox" />
+        <span>Ragu-ragu</span>
+      </label>
+
+      <div class="footer-right-group">
+        <button id="btn-next-q" class="btn btn-next" type="button">Soal berikutnya ►</button>
+        <button id="btn-finish-q" class="btn btn-finish hidden" type="button">Selesai &amp; Kumpulkan ✓</button>
+      </div>
+    </footer>
+
+    <!-- Modal / Drawer Daftar Soal -->
+    <div id="modal-daftar" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-panel daftar-panel">
+        <div class="modal-head">
+          <h3>Daftar Soal Ujian</h3>
+          <button id="btn-close-daftar" class="btn-icon" type="button" aria-label="Tutup">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="daftar-legend">
+            <span><i class="swatch answered"></i> Sudah Dijawab</span>
+            <span><i class="swatch ragu"></i> Ragu-ragu</span>
+            <span><i class="swatch empty"></i> Belum Dijawab</span>
+            <span><i class="swatch current"></i> Soal Aktif</span>
+          </div>
+          <div id="daftar-stats" class="daftar-stats"></div>
+          <div id="daftar-grid-container" class="daftar-sections"></div>
+        </div>
+        <div class="modal-foot">
+          <button id="btn-daftar-finish" class="btn btn-finish" type="button">Selesai &amp; Kumpulkan Ujian</button>
+          <button id="btn-daftar-close2" class="btn btn-secondary" type="button">Kembali ke Soal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Konfirmasi Pengumpulan -->
+    <div id="modal-submit-confirm" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-panel confirm-submit-panel">
+        <div class="modal-head">
+          <h3>Konfirmasi Selesai Ujian</h3>
+          <button id="btn-close-submit" class="btn-icon" type="button">✕</button>
+        </div>
+        <div class="modal-body">
+          <p>Apakah Anda yakin ingin mengakhiri dan mengumpulkan seluruh jawaban Simulasi TKA sekarang?</p>
+          <div id="submit-summary-box" class="submit-summary-box"></div>
+          <label class="checkbox-agree" style="margin-top:14px;">
+            <input id="chk-confirm-finish" type="checkbox" />
+            <span>Ya, saya telah memeriksa jawaban dan siap melihat hasil Auto-Evaluasi.</span>
+          </label>
+        </div>
+        <div class="modal-foot">
+          <button id="btn-cancel-submit" class="btn btn-secondary" type="button">Batal</button>
+          <button id="btn-do-submit" class="btn btn-finish" type="button" disabled>Kumpulkan Sekarang ✓</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security Lockdown Overlay (Exit Fullscreen / Tab Switch Warning) -->
+    <div id="security-lock-overlay" class="security-lock-overlay hidden">
+      <div class="security-lock-card">
+        <div class="lock-icon">⚠️</div>
+        <h2 id="lock-title">Peringatan Keamanan Ujian!</h2>
+        <p id="lock-message">Anda terdeteksi keluar dari mode layar penuh atau berpindah jendela.</p>
+        <div class="lock-counter">
+          Pelanggaran Tercatat: <strong id="lock-viol-count">1 / 3</strong>
+        </div>
+        <p class="lock-sub">Aktivitas ini telah direkam ke Dasbor Proktor. Jika mencapai batas pelanggaran, ujian akan otomatis dikumpulkan.</p>
+        <button id="btn-resume-fullscreen" class="btn btn-primary btn-lg" type="button">
+          Kembali ke Layar Penuh &amp; Lanjutkan Ujian
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- VIEW 4: HASIL & AUTO-EVALUASI PESERTA                               -->
+  <!-- =================================================================== -->
+  <section id="view-result" class="view">
+    <header class="cbt-topbar no-print">
+      <div class="cbt-brand">
+        <span class="cbt-logo-dot">TKA</span>
+        <div>
+          <div class="cbt-brand-title">LAPORAN HASIL &amp; AUTO-EVALUASI TKA</div>
+          <div class="cbt-brand-sub">PENILAIAN OTOMATIS SERVER CLOUDFLARE</div>
+        </div>
+      </div>
+      <div class="cbt-header-right">
+        <button id="btn-print-result" class="btn btn-outline-light btn-sm" type="button">🖨️ Cetak / Simpan PDF</button>
+        <button id="btn-new-session" class="btn btn-warning btn-sm" type="button">Selesai / Keluar</button>
+      </div>
+    </header>
+
+    <main class="result-container">
+      <div id="result-status-banner" class="alert alert-info hidden"></div>
+
+      <!-- Score Hero Card -->
+      <div class="card result-hero-card">
+        <div class="result-hero-grid">
+          <div class="result-student-info">
+            <div class="result-kicker">KARTU HASIL TRY OUT SIMULASI TKA</div>
+            <h1 id="res-student-name">-</h1>
+            <p id="res-student-meta" class="muted-note">-</p>
+            <div class="result-badges">
+              <span id="res-predicate-badge" class="pred-badge">-</span>
+              <span id="res-integrity-badge" class="integrity-badge">-</span>
+            </div>
+            <p id="res-predicate-desc" class="pred-desc"></p>
+          </div>
+
+          <div class="result-scores-grid">
+            <div class="score-tile main">
+              <span class="score-tile-label">Nilai Akhir TKA</span>
+              <span id="res-score-total" class="score-tile-num">0</span>
+              <span id="res-points-sub" class="score-tile-sub">0 / 0 poin</span>
+            </div>
+            <div class="score-tile">
+              <span class="score-tile-label">Literasi Membaca</span>
+              <span id="res-score-lit" class="score-tile-num">-</span>
+            </div>
+            <div class="score-tile">
+              <span class="score-tile-label">Numerasi</span>
+              <span id="res-score-num" class="score-tile-num">-</span>
+            </div>
+            <div class="score-tile">
+              <span class="score-tile-label">Ringkasan Butir</span>
+              <div id="res-item-summary" class="mini-counts"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auto-Evaluation Diagnostics -->
+      <div class="result-two-col">
+        <div class="card">
+          <div class="card-header-strip">
+            <h3>Profil Penguasaan per Domain</h3>
+          </div>
+          <div id="res-domain-bars" class="card-body bar-list"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header-strip">
+            <h3>Capaian Level Kognitif (L1 – L3)</h3>
+          </div>
+          <div id="res-level-bars" class="card-body bar-list"></div>
+        </div>
+      </div>
+
+      <!-- Auto Recommendations -->
+      <div class="card">
+        <div class="card-header-strip">
+          <h3>Rekomendasi Belajar Otomatis (Auto-Evaluasi)</h3>
+        </div>
+        <div class="card-body">
+          <div class="strength-weak-grid">
+            <div class="sw-box strong">
+              <h4>Kekuatan Utama</h4>
+              <ul id="res-strengths"></ul>
+            </div>
+            <div class="sw-box weak">
+              <h4>Perlu Peningkatan</h4>
+              <ul id="res-improvements"></ul>
+            </div>
+          </div>
+          <div class="rec-box">
+            <h4>Rencana Aksi Belajar Disarankan</h4>
+            <ol id="res-recommendations"></ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review & Pembahasan -->
+      <div id="res-review-section" class="card">
+        <div class="card-header-strip review-head">
+          <div>
+            <h3>Pembahasan &amp; Evaluasi Butir Soal</h3>
+            <p>Bandingkan jawaban Anda dengan kunci jawaban dan pembahasan standar TKA.</p>
+          </div>
+          <div class="filter-pills no-print" id="res-filter-pills">
+            <button class="pill active" data-filter="all" type="button">Semua</button>
+            <button class="pill" data-filter="wrong" type="button">Salah / Kosong</button>
+            <button class="pill" data-filter="partial" type="button">Sebagian</button>
+            <button class="pill" data-filter="correct" type="button">Benar</button>
+          </div>
+        </div>
+        <div id="res-review-list" class="card-body review-list"></div>
+      </div>
+    </main>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- VIEW 5: DASBOR PROKTOR / ADMIN                                      -->
+  <!-- =================================================================== -->
+  <section id="view-admin" class="view">
+    <header class="cbt-topbar admin-topbar">
+      <div class="cbt-brand">
+        <span class="cbt-logo-dot">ADM</span>
+        <div>
+          <div class="cbt-brand-title">DASBOR PROKTOR &amp; MONITORING TKA</div>
+          <div class="cbt-brand-sub">PEMANTAUAN REAL-TIME • KEAMANAN • AUTO-EVALUASI KELAS</div>
+        </div>
+      </div>
+      <div class="cbt-header-right">
+        <button id="btn-admin-to-student" class="btn btn-outline-light btn-sm" type="button">← Halaman Peserta</button>
+        <button id="btn-admin-logout" class="btn btn-warning btn-sm hidden" type="button">Keluar Proktor</button>
+      </div>
+    </header>
+
+    <!-- Admin Login Gate -->
+    <main id="admin-login-box" class="admin-login-wrap">
+      <div class="card admin-login-card">
+        <div class="card-header-strip">
+          <h2>Autentikasi Proktor / Admin</h2>
+          <p>Masukkan kata sandi Proktor untuk memantau peserta masuk, token ujian, log pelanggaran, dan nilai auto-evaluasi.</p>
+        </div>
+        <form id="form-admin-login" class="card-body">
+          <div id="admin-login-alert" class="alert alert-danger hidden"></div>
+          <div class="form-group">
+            <label for="input-admin-pass">Kata Sandi Proktor</label>
+            <input id="input-admin-pass" type="password" required placeholder="Masukkan kata sandi proktor" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Masuk Dasbor Proktor</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Admin Live Console -->
+    <main id="admin-console" class="admin-container hidden">
+      <!-- Top Control Strip: Token & Quick Settings -->
+      <div class="admin-control-grid">
+        <div class="card token-panel">
+          <div class="token-panel-left">
+            <div class="token-kicker">TOKEN UJIAN AKTIF</div>
+            <div id="adm-active-token" class="token-display">------</div>
+            <div class="token-sub">Bagikan token ini ke peserta yang hadir di ruang ujian.</div>
+          </div>
+          <div class="token-panel-actions">
+            <button id="btn-rotate-token" class="btn btn-primary" type="button">🔄 Generate Token Baru</button>
+            <button id="btn-copy-token" class="btn btn-secondary" type="button">📋 Salin Token</button>
+          </div>
+        </div>
+
+        <div class="card quick-settings-panel">
+          <div class="quick-settings-row">
+            <label class="switch-row">
+              <input id="adm-toggle-lock" type="checkbox" />
+              <span>Kunci Akses Masuk Baru</span>
+            </label>
+            <label class="switch-row">
+              <input id="adm-toggle-review" type="checkbox" checked />
+              <span>Tampilkan Pembahasan ke Peserta</span>
+            </label>
+            <div class="inline-select">
+              <label for="adm-max-viol">Batas Pelanggaran:</label>
+              <select id="adm-max-viol">
+                <option value="2">2× (Ketat)</option>
+                <option value="3" selected>3× (Standar)</option>
+                <option value="5">5× (Longgar)</option>
+              </select>
+            </div>
+            <button id="btn-export-csv" class="btn btn-success btn-sm" type="button">⬇ Ekspor Rekap CSV</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Peserta Masuk</div>
+          <div id="kpi-total" class="kpi-val">0</div>
+          <div class="kpi-sub">Semua sesi tercatat</div>
+        </div>
+        <div class="kpi-card accent-blue">
+          <div class="kpi-label">Sedang Mengerjakan</div>
+          <div id="kpi-active" class="kpi-val">0</div>
+          <div id="kpi-online" class="kpi-sub">0 online aktif</div>
+        </div>
+        <div class="kpi-card accent-green">
+          <div class="kpi-label">Selesai Dinilai</div>
+          <div id="kpi-finished" class="kpi-val">0</div>
+          <div class="kpi-sub">Auto-evaluasi siap</div>
+        </div>
+        <div class="kpi-card accent-indigo">
+          <div class="kpi-label">Rata-rata Nilai Total</div>
+          <div id="kpi-avg-total" class="kpi-val">-</div>
+          <div id="kpi-avg-split" class="kpi-sub">Lit: - • Num: -</div>
+        </div>
+        <div class="kpi-card accent-red">
+          <div class="kpi-label">Pelanggaran Keamanan</div>
+          <div id="kpi-violations" class="kpi-val">0</div>
+          <div id="kpi-flagged" class="kpi-sub">0 peserta terdeteksi</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs-bar">
+        <div class="admin-tabs">
+          <button class="tab-btn active" data-tab="participants" type="button">👥 Pemantauan Peserta Real-Time</button>
+          <button class="tab-btn" data-tab="violations" type="button">🛡️ Log Keamanan &amp; Pelanggaran</button>
+          <button class="tab-btn" data-tab="analytics" type="button">📊 Auto-Evaluasi &amp; Analisis Butir Kelas</button>
+        </div>
+        <div class="live-sync-badge">
+          <span class="pulse-dot"></span>
+          <span id="adm-last-sync">Sinkron otomatis (5 dtk)</span>
+          <button id="btn-adm-refresh" class="btn btn-secondary btn-xs" type="button">Refresh</button>
+        </div>
+      </div>
+
+      <!-- TAB 1: PARTICIPANTS TABLE -->
+      <div id="tab-participants" class="tab-pane active">
+        <div class="card">
+          <div class="table-toolbar">
+            <input id="adm-search" type="search" placeholder="Cari nama, NISN, atau kelas..." />
+            <select id="adm-filter-status">
+              <option value="all">Semua Status</option>
+              <option value="in_progress">Sedang Mengerjakan</option>
+              <option value="submitted">Selesai Normal</option>
+              <option value="auto_submitted_violation">Auto-Submit Pelanggaran</option>
+              <option value="auto_submitted_timeout">Waktu Habis</option>
+              <option value="force_submitted">Dihentikan Proktor</option>
+            </select>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Peserta</th>
+                  <th>Paket</th>
+                  <th>Status &amp; Koneksi</th>
+                  <th>Progres</th>
+                  <th>Keamanan</th>
+                  <th>Literasi</th>
+                  <th>Numerasi</th>
+                  <th>Nilai Akhir</th>
+                  <th>Aksi Proktor</th>
+                </tr>
+              </thead>
+              <tbody id="adm-participants-tbody">
+                <tr><td colspan="9" class="empty-cell">Memuat data peserta...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: SECURITY LOGS -->
+      <div id="tab-violations" class="tab-pane">
+        <div class="card">
+          <div class="card-header-strip">
+            <h3>Log Aktivitas &amp; Pelanggaran Keamanan Real-Time</h3>
+            <p>Rekaman otomatis perpindahan tab, keluar layar penuh, percobaan salin/DevTools, dan tindakan proktor.</p>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Waktu</th>
+                  <th>Peserta (NISN)</th>
+                  <th>Jenis Pelanggaran</th>
+                  <th>Keterangan</th>
+                  <th>Alamat IP</th>
+                </tr>
+              </thead>
+              <tbody id="adm-violations-tbody">
+                <tr><td colspan="5" class="empty-cell">Belum ada catatan pelanggaran.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: CLASS AUTO-EVALUATION ANALYTICS -->
+      <div id="tab-analytics" class="tab-pane">
+        <div class="result-two-col">
+          <div class="card">
+            <div class="card-header-strip">
+              <h3>Rata-rata Penguasaan Domain Kelas</h3>
+              <p>Diurutkan dari domain yang paling membutuhkan remedial.</p>
+            </div>
+            <div id="adm-domain-analytics" class="card-body bar-list">
+              <p class="muted-note">Belum ada peserta yang menyelesaikan ujian.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header-strip">
+              <h3>Analisis Kesulitan Butir Soal (Item Analysis)</h3>
+              <p>Persentase peserta yang menjawab benar penuh per butir soal.</p>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table compact">
+                <thead>
+                  <tr>
+                    <th>Kode</th>
+                    <th>Subtes / Domain</th>
+                    <th>Level</th>
+                    <th>Tingkat Benar</th>
+                  </tr>
+                </thead>
+                <tbody id="adm-item-analytics">
+                  <tr><td colspan="4" class="empty-cell">Belum ada data analisis butir.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal Detail Evaluasi Peserta (untuk Proktor) -->
+    <div id="modal-adm-detail" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-panel detail-panel">
+        <div class="modal-head">
+          <h3 id="adm-detail-title">Detail Evaluasi Peserta</h3>
+          <button id="btn-close-adm-detail" class="btn-icon" type="button">✕</button>
+        </div>
+        <div id="adm-detail-body" class="modal-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="/js/security-guard.js"></script>
+  <script src="/js/exam.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

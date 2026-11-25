@@ -1,0 +1,21 @@
+{
+  "name": "simulasi-tka",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Simulasi Try Out TKA (Literasi & Numerasi) ala Pusmendik CBT dengan Lapisan Keamanan Anti-Cheat, Dasbor Proktor Real-Time, dan Auto-Evaluasi di Cloudflare Workers + D1",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "node scripts/build-bundle.mjs",
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply simulasi-tka-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply simulasi-tka-db --remote"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261123.1",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.0",
+    "wrangler": "^4.0.0"
+  }
+}
