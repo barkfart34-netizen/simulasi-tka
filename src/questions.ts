@@ -1,3 +1,6 @@
+import { EXTRA_LITERASI_QUESTIONS } from "./questions-literasi-extra";
+import { EXTRA_NUMERASI_QUESTIONS } from "./questions-numerasi-extra";
+
 export type SubjectType = "literasi" | "numerasi";
 export type QuestionType = "pg" | "pgk" | "bs" | "isian";
 export type CognitiveLevel = "L1" | "L2" | "L3";
@@ -114,6 +117,62 @@ const STIMULUS_LIT_4 = `
 <h3 class="stimulus-heading">Integrasi Transportasi Publik: Jalan Keluar Kemacetan Kota?</h3>
 <p>Dalam lima tahun terakhir, pertumbuhan kendaraan bermotor pribadi di kawasan aglomerasi perkotaan mencapai <strong>7,4% per tahun</strong>, sementara penambahan panjang jalan baru kurang dari <strong>1% per tahun</strong>. Ketimpangan ini membuktikan bahwa memperlebar jalan raya bukanlah solusi jangka panjang karena justru memicu fenomena <em>induced demand</em>—semakin lebar jalan dibangun, semakin banyak warga terdorong membeli kendaraan pribadi hingga kemacetan kembali terjadi.</p>
 <p>Sebaliknya, kota-kota yang mengintegrasikan tarif, jadwal, dan jalur pengumpan (<em>feeder</em>) antara kereta komuter, bus rapid transit (BRT), dan jalur pejalan kaki berhasil menurunkan waktu tempuh rata-rata hingga <strong>31%</strong> dalam tiga tahun. Namun, keberhasilan tersebut menuntut konsistensi kebijakan: tarif terjangkau bagi pekerja harian, ketepatan waktu kedatangan armada, keamanan di stasiun penghubung, serta disinsentif parkir bagi kendaraan pribadi di pusat bisnis.</p>
+`;
+
+const STIMULUS_LIT_5 = `
+<div class="stimulus-badge">TEKS INFORMASI • KESEHATAN &amp; GIZI</div>
+<h3 class="stimulus-heading">Gula Tersembunyi dalam Minuman Kemasan Siap Minum</h3>
+<p>Kementerian Kesehatan dan Organisasi Kesehatan Dunia (WHO) menganjurkan batas <strong>maksimal konsumsi gula tambahan</strong> bagi remaja dan orang dewasa sebesar <strong>50 gram per hari</strong> (setara ±4 sendok makan), dengan <strong>batas ideal 25 gram per hari</strong> untuk menurunkan risiko diabetes melitus tipe-2 serta obesitas. Tanpa disadari, satu hingga dua botol minuman manis kemasan sudah dapat melampaui ambang batas harian tersebut.</p>
+<table class="stimulus-table">
+  <thead>
+    <tr>
+      <th>Jenis Minuman Kemasan</th>
+      <th>Takaran Sajian</th>
+      <th>Gula Tambahan per Kemasan</th>
+      <th>Catatan Label Gizi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Teh Manis Kemasan Botol</td>
+      <td>350 mL</td>
+      <td>28 gram</td>
+      <td>Pemanis sukrosa</td>
+    </tr>
+    <tr>
+      <td>Kopi Susu Gula Aren</td>
+      <td>250 mL</td>
+      <td>24 gram</td>
+      <td>Sirup gula aren</td>
+    </tr>
+    <tr>
+      <td>Minuman Isotonik</td>
+      <td>500 mL</td>
+      <td>30 gram</td>
+      <td>Tinggi gula &amp; natrium</td>
+    </tr>
+    <tr>
+      <td>Jus Buah Kemasan Kotak</td>
+      <td>250 mL</td>
+      <td>22 gram</td>
+      <td>Konsentrat buah + gula</td>
+    </tr>
+    <tr>
+      <td>Susu UHT Plain (Tawar)</td>
+      <td>250 mL</td>
+      <td>0 gram</td>
+      <td>Hanya laktosa alami (11 g)</td>
+    </tr>
+  </tbody>
+</table>
+<p class="stimulus-source">Sumber: Diadaptasi dari Panduan Baca Label Pangan Olahan, Kemenkes RI (2025).</p>
+`;
+
+const STIMULUS_LIT_6 = `
+<div class="stimulus-badge">TEKS INFORMASI • BUDAYA &amp; KEARIFAN LOKAL</div>
+<h3 class="stimulus-heading">Subak Bali: Harmoni Air, Sawah, dan Tri Hita Karana</h3>
+<p>Sejak abad ke-9, masyarakat agraris Bali telah mengembangkan sistem pengelolaan irigasi terpadu yang dikenal sebagai <strong>Subak</strong>. Pada tahun <strong>2012</strong>, UNESCO secara resmi menetapkan Lanskap Budaya Provinsi Bali beserta sistem Subak sebagai Warisan Budaya Dunia. Subak bukan sekadar jaringan kanal dan terowongan pembagi air, melainkan organisasi sosial-religius demokratis yang menghimpun petani lintas desa dalam satu daerah aliran sungai.</p>
+<p>Tata kelola Subak berakar pada filosofi <strong>Tri Hita Karana</strong>, yaitu tiga pilar keharmonisan hidup: <em>Parahyangan</em> (keselarasan manusia dengan Tuhan melalui pura air), <em>Pawongan</em> (keselarasan antarmanusia melalui musyawarah pembagian air yang adil), dan <em>Palemahan</em> (keselarasan manusia dengan lingkungan alam). Salah satu keunggulan ekologis Subak adalah penjadwalan <strong>pola tanam dan masa bera (pengeringan sawah) secara serentak</strong>. Strategi kolektif ini memutus siklus hidup serta ketersediaan makanan hama tikus dan wereng secara alami tanpa ketergantungan berlebih pada pestisida kimia.</p>
 `;
 
 // ============================================================================
@@ -249,11 +308,49 @@ const STIMULUS_NUM_4 = `
 </div>
 `;
 
+const STIMULUS_NUM_5 = `
+<div class="stimulus-badge">NUMERASI • GEOMETRI RUANG &amp; DEBIT</div>
+<h3 class="stimulus-heading">Sistem Pemanenan Air Hujan Sekolah (Tabung &amp; Bak Balok)</h3>
+<p>Untuk menghemat air penyiraman taman, sekolah memasang sebuah <strong>tangki utama berbentuk tabung</strong> berdiameter dalam <strong>140 cm</strong> dan tinggi <strong>200 cm</strong> (π = 22/7). Air dari tangki tabung dialirkan menggunakan pompa berdebit konstan <strong>40 liter/menit</strong> menuju <strong>bak distribusi berbentuk balok</strong> berukuran bagian dalam panjang <strong>150 cm</strong>, lebar <strong>100 cm</strong>, dan tinggi <strong>80 cm</strong>. <em>(Catatan: 1 liter = 1 dm³ = 1.000 cm³)</em></p>
+<div class="stimulus-svg-wrap">
+  <svg viewBox="0 0 470 215" width="100%" style="max-width:450px;height:auto;display:block;margin:0 auto;" role="img" aria-label="Diagram Tangki Tabung dan Bak Balok">
+    <!-- Tangki Tabung -->
+    <ellipse cx="105" cy="46" rx="58" ry="15" fill="#bfdbfe" stroke="#1b4d89" stroke-width="2.2"/>
+    <path d="M 47 46 V 164 A 58 15 0 0 0 163 164 V 46" fill="#dbeafe" stroke="#1b4d89" stroke-width="2.2"/>
+    <ellipse cx="105" cy="46" rx="58" ry="15" fill="#93c5fd" fill-opacity="0.6" stroke="#1b4d89" stroke-width="2"/>
+    <line x1="47" y1="46" x2="163" y2="46" stroke="#0f3b73" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <text x="105" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#0f3b73">d = 140 cm</text>
+    <text x="105" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Tangki Tabung</text>
+    <text x="105" y="128" text-anchor="middle" font-size="11" fill="#1e3a8a">t = 200 cm</text>
+    <!-- Pipe & Pump Arrow -->
+    <line x1="163" y1="145" x2="258" y2="145" stroke="#0f766e" stroke-width="4"/>
+    <polygon points="256,138 270,145 256,152" fill="#0f766e"/>
+    <rect x="176" y="120" width="74" height="20" rx="4" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+    <text x="213" y="134" text-anchor="middle" font-size="10" font-weight="700" fill="#115e59">40 L/menit</text>
+    <!-- Bak Balok (Isometric-like) -->
+    <polygon points="278,100 408,100 434,76 304,76" fill="#e0f2fe" stroke="#1b4d89" stroke-width="2"/>
+    <rect x="278" y="100" width="130" height="74" fill="#bae6fd" stroke="#1b4d89" stroke-width="2.2"/>
+    <polygon points="408,100 434,76 434,150 408,174" fill="#7dd3fc" stroke="#1b4d89" stroke-width="2"/>
+    <text x="343" y="135" text-anchor="middle" font-size="11" font-weight="700" fill="#0f3b73">Bak Balok</text>
+    <text x="343" y="191" text-anchor="middle" font-size="11" font-weight="700" fill="#1b4d89">p = 150 cm</text>
+    <text x="444" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#1b4d89" transform="rotate(-90 444 122)">t = 80 cm</text>
+    <text x="380" y="70" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1b4d89">l = 100 cm</text>
+  </svg>
+</div>
+`;
+
+const STIMULUS_NUM_6 = `
+<div class="stimulus-badge">NUMERASI • POLA BILANGAN &amp; PELUANG</div>
+<h3 class="stimulus-heading">Target Tabungan Literasi &amp; Seleksi Delegasi Lomba TKA</h3>
+<p><strong>Konteks A (Rencana Tabungan):</strong> Rina menyisihkan uang sakunya setiap bulan selama <strong>12 bulan</strong> untuk membeli perangkat belajar. Pada <strong>bulan ke-1</strong> ia menabung <strong>Rp50.000</strong>, dan setiap bulan berikutnya jumlah setoran selalu bertambah tetap sebesar <strong>Rp15.000</strong> (bulan ke-2 Rp65.000, bulan ke-3 Rp80.000, dan seterusnya).</p>
+<p><strong>Konteks B (Seleksi Delegasi):</strong> Sekolah menyeleksi delegasi Lomba TKA dari <strong>10 kandidat terbaik</strong> yang terdiri atas <strong>6 siswa peminatan Sains</strong> dan <strong>4 siswa peminatan Sosial</strong>. Dari ke-10 kandidat tersebut akan dibentuk struktur pimpinan (1 Ketua dan 1 Wakil Ketua) maupun tim lomba beranggotakan 2 orang.</p>
+`;
+
 // ============================================================================
-// QUESTION BANK (24 SOAL: 12 LITERASI + 12 NUMERASI)
+// QUESTION BANK (70 SOAL: 35 LITERASI + 35 NUMERASI)
 // ============================================================================
 
-export const QUESTION_BANK: Question[] = [
+const BASE_QUESTION_BANK: Question[] = [
   // -------------------- LITERASI (12 SOAL) --------------------
   {
     id: "LIT-01",
@@ -584,8 +681,162 @@ export const QUESTION_BANK: Question[] = [
     explanation:
       "S1 Benar (data kuantitatif memperkuat klaim ketimpangan). S2 Salah (teks menyebut perlunya disinsentif parkir). S3 Benar (penurunan 31% mendekati sepertiga / 33,3%).",
   },
+  {
+    id: "LIT-13",
+    subject: "literasi",
+    domain: "Teks Informasi",
+    level: "L1",
+    levelLabel: "Menemukan Informasi",
+    type: "pg",
+    points: 10,
+    stimulusTitle: "Gula Tersembunyi dalam Minuman Kemasan",
+    stimulusHtml: STIMULUS_LIT_5,
+    promptHtml:
+      "<p>Jika seorang pelajar dalam sehari mengonsumsi <strong>1 botol Teh Manis Kemasan</strong> dan <strong>1 botol Kopi Susu Gula Aren</strong>, bagaimana status asupan gula tambahannya dibandingkan anjuran Kemenkes/WHO?</p>",
+    options: [
+      { id: "A", text: "Masih berada di bawah batas ideal harian 25 gram." },
+      { id: "B", text: "Berada tepat pada batas ideal harian sebesar 25 gram." },
+      { id: "C", text: "Sudah melampaui batas maksimal harian 50 gram (total 52 gram)." },
+      { id: "D", text: "Masih aman karena total gula tambahannya baru mencapai 42 gram." },
+    ],
+    correctAnswer: "C",
+    explanation:
+      "Teh Manis Kemasan (28 g) + Kopi Susu Gula Aren (24 g) = 52 gram gula tambahan, sehingga sudah melampaui batas maksimal harian 50 gram.",
+  },
+  {
+    id: "LIT-14",
+    subject: "literasi",
+    domain: "Teks Informasi",
+    level: "L2",
+    levelLabel: "Interpretasi & Integrasi",
+    type: "pgk",
+    points: 12,
+    stimulusTitle: "Gula Tersembunyi dalam Minuman Kemasan",
+    stimulusHtml: STIMULUS_LIT_5,
+    promptHtml:
+      "<p>Pilihlah <strong>semua pernyataan yang TEPAT</strong> berdasarkan tabel kandungan gula kemasan di atas! <em>(Jawaban benar lebih dari satu)</em></p>",
+    options: [
+      { id: "A", text: "Mengonsumsi 1 botol Minuman Isotonik (30 g) saja sudah melebihi batas ideal gula tambahan harian (25 g)." },
+      { id: "B", text: "Susu UHT Plain tidak mengandung gula tambahan sama sekali, melainkan hanya laktosa alami." },
+      { id: "C", text: "Jus Buah Kemasan 250 mL memiliki gula tambahan lebih tinggi daripada Teh Manis Kemasan 350 mL." },
+      { id: "D", text: "Dua kotak Jus Buah Kemasan menyumbang 44 gram gula tambahan, hampir mencapai batas maksimal 50 gram." },
+    ],
+    correctAnswer: ["A", "B", "D"],
+    explanation:
+      "A benar (30 g > 25 g). B benar (0 g gula tambahan, hanya 11 g laktosa alami). C salah (22 g < 28 g). D benar (2 × 22 g = 44 g, mendekati 50 g).",
+  },
+  {
+    id: "LIT-15",
+    subject: "literasi",
+    domain: "Teks Informasi",
+    level: "L3",
+    levelLabel: "Evaluasi & Refleksi",
+    type: "bs",
+    points: 12,
+    stimulusTitle: "Gula Tersembunyi dalam Minuman Kemasan",
+    stimulusHtml: STIMULUS_LIT_5,
+    promptHtml:
+      "<p>Nilailah setiap pernyataan kritis mengenai kebiasaan konsumsi minuman kemasan berikut sebagai <strong>Benar</strong> atau <strong>Salah</strong>!</p>",
+    statements: [
+      {
+        id: "S1",
+        text: "Label 'Jus Buah' pada kemasan kotak otomatis menjamin produk tersebut bebas dari gula tambahan.",
+        answer: "S",
+      },
+      {
+        id: "S2",
+        text: "Membaca informasi nilai gizi dan takaran sajian membantu pelajar mencegah konsumsi gula tambahan berlebih.",
+        answer: "B",
+      },
+      {
+        id: "S3",
+        text: "Mengonsumsi 2 botol Kopi Susu Gula Aren (48 g) memang di bawah batas maksimal 50 g, tetapi sudah hampir dua kali lipat batas ideal 25 g.",
+        answer: "B",
+      },
+    ],
+    correctAnswer: { S1: "S", S2: "B", S3: "B" },
+    explanation:
+      "S1 Salah karena jus buah kemasan pada tabel masih mengandung 22 g gula tambahan. S2 Benar sesuai tujuan panduan label gizi. S3 Benar (48 g < 50 g namun mendekati 2 × 25 g = 50 g).",
+  },
+  {
+    id: "LIT-16",
+    subject: "literasi",
+    domain: "Teks Informasi",
+    level: "L2",
+    levelLabel: "Interpretasi & Integrasi",
+    type: "pg",
+    points: 10,
+    stimulusTitle: "Subak Bali & Tri Hita Karana",
+    stimulusHtml: STIMULUS_LIT_6,
+    promptHtml:
+      "<p>Berdasarkan bacaan di atas, mengapa penjadwalan pola tanam dan masa bera secara serentak dalam sistem Subak mampu mengendalikan hama secara alami?</p>",
+    options: [
+      { id: "A", text: "Karena setiap petani wajib menyemprotkan pestisida kimia berdosis tinggi secara bersamaan." },
+      {
+        id: "B",
+        text: "Karena pengeringan sawah serentak memutus siklus hidup serta ketersediaan pakan bagi hama tikus dan wereng.",
+      },
+      { id: "C", text: "Karena saluran air Subak mengalirkan air laut yang tidak disukai serangga sawah." },
+      { id: "D", text: "Karena lahan sawah hanya ditanami satu kali dalam lima tahun." },
+    ],
+    correctAnswer: "B",
+    explanation:
+      "Paragraf kedua menjelaskan secara jelas bahwa pola tanam dan masa bera serentak memutus siklus hidup serta sumber makanan hama tikus dan wereng secara alami.",
+  },
+  {
+    id: "LIT-17",
+    subject: "literasi",
+    domain: "Teks Informasi",
+    level: "L1",
+    levelLabel: "Menemukan Informasi",
+    type: "isian",
+    points: 10,
+    stimulusTitle: "Subak Bali & Tri Hita Karana",
+    stimulusHtml: STIMULUS_LIT_6,
+    promptHtml:
+      "<p>Pada tahun berapakah UNESCO secara resmi menetapkan Lanskap Budaya Bali beserta sistem Subak sebagai Warisan Budaya Dunia? <em>(Tulis 4 digit tahunnya saja)</em></p>",
+    correctAnswer: "2012",
+    acceptedNumeric: { value: 2012, tolerance: 0, unit: "tahun" },
+    isianPlaceholder: "Contoh: 2010",
+    isianUnit: "",
+    explanation:
+      "Kalimat kedua paragraf pertama menyebutkan secara eksplisit bahwa UNESCO menetapkan Subak sebagai Warisan Budaya Dunia pada tahun 2012.",
+  },
+  {
+    id: "LIT-18",
+    subject: "literasi",
+    domain: "Teks Informasi",
+    level: "L3",
+    levelLabel: "Evaluasi & Refleksi",
+    type: "bs",
+    points: 12,
+    stimulusTitle: "Subak Bali & Tri Hita Karana",
+    stimulusHtml: STIMULUS_LIT_6,
+    promptHtml:
+      "<p>Tentukan apakah setiap simpulan mengenai kearifan lokal Subak berikut <strong>Benar</strong> atau <strong>Salah</strong>!</p>",
+    statements: [
+      {
+        id: "S1",
+        text: "Pilar Palemahan dalam Tri Hita Karana mencerminkan upaya menjaga keselarasan hubungan manusia dengan lingkungan alam.",
+        answer: "B",
+      },
+      {
+        id: "S2",
+        text: "Subak semata-mata merupakan proyek saluran irigasi teknis tanpa melibatkan musyawarah sosial antarpetani.",
+        answer: "S",
+      },
+      {
+        id: "S3",
+        text: "Pengelolaan Subak membuktikan bahwa ketahanan pangan berkelanjutan dapat dicapai melalui kolaborasi sosial dan prinsip ekologis.",
+        answer: "B",
+      },
+    ],
+    correctAnswer: { S1: "B", S2: "S", S3: "B" },
+    explanation:
+      "S1 Benar sesuai definisi Palemahan. S2 Salah karena Subak adalah organisasi sosial-religius demokratis dengan musyawarah (Pawongan). S3 Benar sebagai refleksi isi bacaan.",
+  },
 
-  // -------------------- NUMERASI (12 SOAL) --------------------
+  // -------------------- NUMERASI (17 SOAL) --------------------
   {
     id: "NUM-01",
     subject: "numerasi",
@@ -874,6 +1125,131 @@ export const QUESTION_BANK: Question[] = [
     explanation:
       "S1 Benar: total nilai baru = 3.220 + 200 = 3.420; jumlah siswa = 42 → mean = 3.420/42 ≈ 81,43 > 81. S2 Salah: frekuensi 100 menjadi 6, masih kalah dari nilai 80 (14 siswa). S3 Benar: data ke-21 & ke-22 dari 42 siswa masih berada di kelompok nilai 80 (urutan 13 s.d. 26).",
   },
+  {
+    id: "NUM-13",
+    subject: "numerasi",
+    domain: "Geometri & Pengukuran",
+    level: "L2",
+    levelLabel: "Aplikasi",
+    type: "pg",
+    points: 10,
+    stimulusTitle: "Sistem Pemanenan Air Hujan Sekolah",
+    stimulusHtml: STIMULUS_NUM_5,
+    promptHtml:
+      "<p>Berapakah kapasitas maksimum air yang dapat ditampung oleh <strong>tangki utama berbentuk tabung</strong> tersebut dalam satuan liter? (π = 22/7)</p>",
+    options: [
+      { id: "A", text: "2.460 liter" },
+      { id: "B", text: "3.080 liter" },
+      { id: "C", text: "3.850 liter" },
+      { id: "D", text: "6.160 liter" },
+    ],
+    correctAnswer: "B",
+    explanation:
+      "Diameter = 140 cm → jari-jari r = 70 cm = 7 dm; tinggi t = 200 cm = 20 dm. Volume tabung = π × r² × t = (22/7) × 7 × 7 × 20 = 22 × 7 × 20 = 3.080 dm³ = 3.080 liter.",
+  },
+  {
+    id: "NUM-14",
+    subject: "numerasi",
+    domain: "Geometri & Pengukuran",
+    level: "L2",
+    levelLabel: "Aplikasi",
+    type: "isian",
+    points: 12,
+    stimulusTitle: "Sistem Pemanenan Air Hujan Sekolah",
+    stimulusHtml: STIMULUS_NUM_5,
+    promptHtml:
+      "<p>Jika <strong>bak distribusi berbentuk balok</strong> mula-mula kosong, berapa <strong>menit</strong> waktu yang dibutuhkan pompa berdebit 40 liter/menit untuk mengisi bak balok tersebut hingga tepat penuh? <em>(Tulis angkanya saja)</em></p>",
+    correctAnswer: "30",
+    acceptedNumeric: { value: 30, tolerance: 0, unit: "menit" },
+    isianPlaceholder: "Contoh: 25",
+    isianUnit: "menit",
+    explanation:
+      "Volume bak balok = 15 dm × 10 dm × 8 dm = 1.200 liter. Waktu pengisian = Volume / Debit = 1.200 / 40 = 30 menit.",
+  },
+  {
+    id: "NUM-15",
+    subject: "numerasi",
+    domain: "Geometri & Pengukuran",
+    level: "L3",
+    levelLabel: "Penalaran",
+    type: "bs",
+    points: 12,
+    stimulusTitle: "Sistem Pemanenan Air Hujan Sekolah",
+    stimulusHtml: STIMULUS_NUM_5,
+    promptHtml:
+      "<p>Periksalah perhitungan operasional pemanenan air hujan berikut dengan memilih <strong>Benar</strong> atau <strong>Salah</strong>!</p>",
+    statements: [
+      {
+        id: "S1",
+        text: "Jika tangki tabung mula-mula penuh (3.080 liter) lalu digunakan mengisi bak balok kosong hingga penuh, sisa air di tangki tabung adalah 1.880 liter.",
+        answer: "B",
+      },
+      {
+        id: "S2",
+        text: "Satu tangki tabung penuh cukup untuk mengisi bak balok kosong hingga penuh sebanyak tepat 3 kali.",
+        answer: "S",
+      },
+      {
+        id: "S3",
+        text: "Apabila ketinggian air di dalam bak balok mencapai 60 cm, maka volume air di dalam bak tersebut tepat 900 liter.",
+        answer: "B",
+      },
+    ],
+    correctAnswer: { S1: "B", S2: "S", S3: "B" },
+    explanation:
+      "S1 Benar: 3.080 - 1.200 = 1.880 liter. S2 Salah: 3 × 1.200 = 3.600 liter > 3.080 liter (hanya cukup 2 kali penuh dengan sisa 680 liter). S3 Benar: 15 dm × 10 dm × 6 dm = 900 liter.",
+  },
+  {
+    id: "NUM-16",
+    subject: "numerasi",
+    domain: "Aljabar",
+    level: "L2",
+    levelLabel: "Aplikasi",
+    type: "pg",
+    points: 10,
+    stimulusTitle: "Tabungan Literasi & Seleksi Delegasi",
+    stimulusHtml: STIMULUS_NUM_6,
+    promptHtml:
+      "<p>Berdasarkan <strong>Konteks A</strong>, berapakah total seluruh uang tabungan Rina tepat setelah ia menyelesaikan setoran pada <strong>bulan ke-12</strong>?</p>",
+    options: [
+      { id: "A", text: "Rp1.380.000" },
+      { id: "B", text: "Rp1.500.000" },
+      { id: "C", text: "Rp1.590.000" },
+      { id: "D", text: "Rp1.740.000" },
+    ],
+    correctAnswer: "C",
+    explanation:
+      "Deret aritmetika dengan a = 50.000, b = 15.000, n = 12. Suku ke-12: U12 = 50.000 + 11(15.000) = 215.000. Jumlah total: S12 = (12/2) × (50.000 + 215.000) = 6 × 265.000 = Rp1.590.000.",
+  },
+  {
+    id: "NUM-17",
+    subject: "numerasi",
+    domain: "Data & Ketidakpastian",
+    level: "L3",
+    levelLabel: "Penalaran",
+    type: "pgk",
+    points: 12,
+    stimulusTitle: "Tabungan Literasi & Seleksi Delegasi",
+    stimulusHtml: STIMULUS_NUM_6,
+    promptHtml:
+      "<p>Berdasarkan <strong>Konteks A dan Konteks B</strong>, pilihlah <strong>semua pernyataan yang BENAR</strong>! <em>(Jawaban benar lebih dari satu)</em></p>",
+    options: [
+      { id: "A", text: "Besar setoran tabungan Rina khusus pada bulan ke-10 adalah Rp185.000." },
+      { id: "B", text: "Banyak susunan berbeda untuk memilih 1 Ketua dan 1 Wakil Ketua dari 10 kandidat adalah 90 cara." },
+      { id: "C", text: "Banyak cara membentuk tim 2 orang yang terdiri atas 1 siswa Sains dan 1 siswa Sosial adalah 24 cara." },
+      { id: "D", text: "Jika dipilih 2 siswa secara acak tanpa memperhatikan urutan dari 10 kandidat, peluang keduanya dari peminatan Sosial adalah 0,40." },
+    ],
+    correctAnswer: ["A", "B", "C"],
+    explanation:
+      "A benar: U10 = 50.000 + 9(15.000) = Rp185.000. B benar: permutasi P(10,2) = 10 × 9 = 90 cara. C benar: kaidah perkalian 6 × 4 = 24 cara. D salah: peluangnya adalah C(4,2)/C(10,2) = 6/45 = 2/15 ≈ 0,133, bukan 0,40.",
+  },
+];
+
+export const QUESTION_BANK: Question[] = [
+  ...BASE_QUESTION_BANK.filter((q) => q.subject === "literasi"),
+  ...EXTRA_LITERASI_QUESTIONS,
+  ...BASE_QUESTION_BANK.filter((q) => q.subject === "numerasi"),
+  ...EXTRA_NUMERASI_QUESTIONS,
 ];
 
 export function getQuestionsForPackage(pkg: string): Question[] {

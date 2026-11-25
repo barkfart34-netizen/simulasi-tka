@@ -6,9 +6,9 @@ Aplikasi **Simulasi Tes Kemampuan Akademik (TKA)** full-stack di atas **Cloudfla
 
 1. **Tema CBT Pusmendik Asli**
    - Halaman Login Peserta, Konfirmasi Data Peserta + Pakta Integritas, Header biru khas Pusmendik, pengatur ukuran huruf (`A-`, `A`, `A+`), Sisa Waktu tersinkron server, panel **Daftar Soal** dengan kode warna (*Sudah Dijawab*, *Ragu-ragu*, *Belum Dijawab*, *Aktif*), dan tata letak split-pane (Stimulus/Wacana di kiri, Pertanyaan di kanan).
-2. **Bank Soal Literasi Membaca & Numerasi (24 Butir)**
-   - **12 Soal Literasi Membaca** (Teks Informasi Sains, Teks Sastra Cerpen, Literasi Digital, Teks Argumentatif).
-   - **12 Soal Numerasi** (Bilangan & Aritmetika Sosial, Aljabar & Fungsi Linear, Geometri & Pengukuran dengan diagram SVG presisi, Data & Ketidakpastian dengan grafik batang SVG).
+2. **Bank Soal Literasi Membaca & Numerasi (70 Butir: 35 Literasi + 35 Numerasi)**
+   - **35 Soal Literasi Membaca** (Teks Informasi Sains, Teks Sastra Cerpen & Puisi, Teks Jamak Perbandingan Artikel, Biografi B.J. Habibie, Literasi Digital & AI, Kesehatan Gizi, Kearifan Lokal Subak, Energi Surya PLTS, dan Ekonomi Sirkular).
+   - **35 Soal Numerasi** (Bilangan & Perbandingan/Eksponen, Aljabar Linear/SPLDV/Fungsi Kuadrat/Deret, Geometri Datar & Ruang Tabung-Kerucut-Balok dengan diagram SVG presisi, Trigonometri Sudut Elevasi, serta Statistika & Peluang).
    - Mendukung 4 tipe soal standar TKA/AKM: **Pilihan Ganda (PG)**, **Pilihan Ganda Kompleks (PGK)** dengan partial credit, **Benar / Salah (Matriks Pernyataan)**, dan **Isian Singkat**.
 3. **Lapisan Keamanan Berlapis (Safe Exam Shield + Server Enforcement)**
    - Wajib **Fullscreen Mode**, deteksi **Tab Switch / Window Blur (Alt+Tab)**, blokir klik kanan, copy/cut/paste, shortcut DevTools (`F12`, `Ctrl+Shift+I/J/C`, `Ctrl+U`), PrintScreen blur, dan kunci **Single-Tab (`BroadcastChannel`)**.

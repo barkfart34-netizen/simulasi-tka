@@ -90,6 +90,13 @@
       $("login-exam-title").textContent = cfg.examTitle || "SIMULASI TKA NASIONAL 2026";
       $("exam-header-title").textContent = cfg.examTitle || "SIMULASI TKA — PUSMENDIK CBT";
       $("info-max-viol").textContent = String(cfg.maxViolations || 3);
+      if (cfg.questionCounts && cfg.durations) {
+        const sel = $("input-package");
+        const opts = sel.options;
+        opts[0].textContent = `Paket Lengkap — Literasi & Numerasi (${cfg.questionCounts.lengkap} Soal • ${Math.round(cfg.durations.lengkap / 60)} Menit)`;
+        opts[1].textContent = `Subtes Literasi Membaca (${cfg.questionCounts.literasi} Soal • ${Math.round(cfg.durations.literasi / 60)} Menit)`;
+        opts[2].textContent = `Subtes Numerasi (${cfg.questionCounts.numerasi} Soal • ${Math.round(cfg.durations.numerasi / 60)} Menit)`;
+      }
       if (cfg.examLocked) {
         $("login-locked-banner").classList.remove("hidden");
         $("btn-to-confirm").disabled = true;

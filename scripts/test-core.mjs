@@ -3,12 +3,14 @@ import { QUESTION_BANK, stripAnswerKey } from "../dist/tsc/questions.js";
 import { evaluateSession } from "../dist/tsc/evaluation.js";
 import { signToken, verifyToken, timingSafeEqual, shuffleDeterministic, generateExamToken } from "../dist/tsc/security.js";
 
-// 1. Verify question bank integrity
-assert.equal(QUESTION_BANK.length, 24, "Expected 24 questions");
+// 1. Verify question bank integrity (35 Literasi + 35 Numerasi = 70 total)
+assert.equal(QUESTION_BANK.length, 70, "Expected 70 total questions");
 const lit = QUESTION_BANK.filter((q) => q.subject === "literasi");
 const num = QUESTION_BANK.filter((q) => q.subject === "numerasi");
-assert.equal(lit.length, 12, "Expected 12 Literasi questions");
-assert.equal(num.length, 12, "Expected 12 Numerasi questions");
+assert.equal(lit.length, 35, "Expected 35 Literasi questions");
+assert.equal(num.length, 35, "Expected 35 Numerasi questions");
+const uniqueIds = new Set(QUESTION_BANK.map((q) => q.id));
+assert.equal(uniqueIds.size, 70, "Duplicate question IDs detected");
 
 // 2. Verify zero answer-key leakage
 for (const q of QUESTION_BANK) {

@@ -184,9 +184,9 @@ async function handleApi(request: Request, env: Env): Promise<Response> {
       maxViolations: Number(settings.max_violations || 3),
       showReviewToStudent: settings.show_review_to_student !== "0",
       durations: {
-        literasi: Number(settings.duration_literasi_sec || 1800),
-        numerasi: Number(settings.duration_numerasi_sec || 2100),
-        lengkap: Number(settings.duration_lengkap_sec || 3600),
+        literasi: Number(settings.duration_literasi_sec || 3600),
+        numerasi: Number(settings.duration_numerasi_sec || 3600),
+        lengkap: Number(settings.duration_lengkap_sec || 7200),
       },
       questionCounts: {
         literasi: QUESTION_BANK.filter((q) => q.subject === "literasi").length,
@@ -267,10 +267,10 @@ async function handleApi(request: Request, env: Env): Promise<Response> {
 
     const durationSec =
       packageType === "literasi"
-        ? Number(settings.duration_literasi_sec || 1800)
+        ? Number(settings.duration_literasi_sec || 3600)
         : packageType === "numerasi"
-        ? Number(settings.duration_numerasi_sec || 2100)
-        : Number(settings.duration_lengkap_sec || 3600);
+        ? Number(settings.duration_numerasi_sec || 3600)
+        : Number(settings.duration_lengkap_sec || 7200);
 
     const maxViolations = Number(settings.max_violations || 3);
     const now = Date.now();

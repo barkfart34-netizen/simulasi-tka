@@ -66,7 +66,7 @@ INSERT OR IGNORE INTO settings (key, value, updated_at) VALUES
   ('exam_locked', '0', 1764068400000),
   ('max_violations', '3', 1764068400000),
   ('show_review_to_student', '1', 1764068400000),
-  ('duration_literasi_sec', '1800', 1764068400000),
-  ('duration_numerasi_sec', '2100', 1764068400000),
-  ('duration_lengkap_sec', '3600', 1764068400000),
+  ('duration_literasi_sec', '3600', 1764068400000),
+  ('duration_numerasi_sec', '3600', 1764068400000),
+  ('duration_lengkap_sec', '7200', 1764068400000),
   ('exam_title', 'SIMULASI TKA NASIONAL 2026', 1764068400000);
