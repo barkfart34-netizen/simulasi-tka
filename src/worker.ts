@@ -934,25 +934,39 @@ export default {
         const assetRes = await env.ASSETS.fetch(request);
         return applySecurityHeaders(assetRes, false);
       }
+      const key = url.pathname === "/" || url.pathname === "/admin" ? "/index.html" : url.pathname;
       const bundled = globalThis.__BUNDLED_STATIC_ASSETS__;
-      if (bundled) {
-        const key = url.pathname === "/" || url.pathname === "/admin" ? "/index.html" : url.pathname;
+      if (bundled && bundled[key]) {
         const asset = bundled[key];
-        if (asset) {
-          return applySecurityHeaders(
-            new Response(asset.content, {
-              status: 200,
-              headers: {
-                "Content-Type": asset.contentType,
-                "Cache-Control": key === "/index.html" ? "no-cache" : "public, max-age=3600",
-              },
-            }),
-            false
-          );
-        }
-        return applySecurityHeaders(new Response("Not Found", { status: 404 }), false);
+        return applySecurityHeaders(
+          new Response(asset.content, {
+            status: 200,
+            headers: {
+              "Content-Type": asset.contentType,
+              "Cache-Control": key === "/index.html" ? "no-cache" : "public, max-age=3600",
+            },
+          }),
+          false
+        );
       }
-      return jsonResponse({ error: "Static assets binding is unavailable." }, 500);
+      // Fallback to D1 static_assets table (used when deployed via API without ASSETS binding)
+      const row = await env.DB.prepare("SELECT content, content_type FROM static_assets WHERE path = ?")
+        .bind(key)
+        .first<{ content: string; content_type: string }>()
+        .catch(() => null);
+      if (row) {
+        return applySecurityHeaders(
+          new Response(row.content, {
+            status: 200,
+            headers: {
+              "Content-Type": row.content_type,
+              "Cache-Control": key === "/index.html" ? "no-cache" : "public, max-age=3600",
+            },
+          }),
+          false
+        );
+      }
+      return applySecurityHeaders(new Response("Not Found", { status: 404 }), false);
     } catch (err) {
       console.error(JSON.stringify({ event: "worker_error", path: url.pathname, message: (err as Error).message }));
       return jsonResponse({ error: "Terjadi kesalahan internal server." }, 500);
